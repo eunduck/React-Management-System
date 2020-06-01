@@ -26,6 +26,14 @@ const customers = [
     'age': '30대',
     'job': '직장인',
     'city': '서울'
+  },
+  {
+    'id': 4,
+    'image': 'https://placeimg.com/64/64/3',
+    'name': '김은덕4',
+    'age': '40대',
+    'job': '직장인',
+    'city': '서울'
   }
 ];
 
