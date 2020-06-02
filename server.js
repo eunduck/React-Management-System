@@ -5,7 +5,7 @@ const port = process.env.port || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 
-app.get('/api/hello', (req, res) => {
+app.get('/api/customers', (req, res) => {
     res.send([
         {
             'id': 1,
