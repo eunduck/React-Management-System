@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Customer from './components/Customer';
+import Amount from './components/Amount';
 import './App.css';import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
@@ -22,14 +22,14 @@ const styles = theme => ({
 
 class App extends Component {
   state = {
-    customers: '',
+    amounts: '',
     completed: 0
   }
 
   componentDidMount() {
     this.timer = setInterval(this.progress, 20);
     this.callApi()
-    .then(res => this.setState({customers:res}))
+    .then(res => this.setState({amounts:res}))
     .catch(err => console.log(err));
   }
 
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/api/customers');
+    const response = await fetch('/api/amounts');
     const body = await response.json();
     return body;
   }
@@ -55,18 +55,18 @@ class App extends Component {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>번호</TableCell>
-              <TableCell>이미지</TableCell>
-              <TableCell>이름</TableCell>
-              <TableCell>나이</TableCell>
-              <TableCell>직업</TableCell>
-              <TableCell>지역</TableCell>
+              <TableCell></TableCell>
+              <TableCell>날짜</TableCell>
+              <TableCell>카테고리</TableCell>
+              <TableCell>내역</TableCell>
+              <TableCell>금액</TableCell>
+              <TableCell>수정</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-          {this.state.customers ?
-          this.state.customers.map(c => {
-          return <Customer key={c.id} id={c.id} image={c.image} name={c.name} age={c.age} job={c.job} city={c.city} />
+          {this.state.amounts ?
+          this.state.amounts.map(c => {
+          return <Amount key={c.id} id={c.id} createdAt={c.createdAt} category={c.category} content={c.content} amount={c.amount} />
           }) :
           <TableRow>
             <TableCell colSpan="6" align="center">
